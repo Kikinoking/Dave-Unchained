@@ -1,0 +1,506 @@
+\documentclass[a4paper,oneside,12pt]{book}
+\pagestyle{empty}
+%%%%%% Paquets utiles
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage[french]{babel}
+%\usepackage[utf8]{inputenc}
+\usepackage[latin1]{inputenc}
+\usepackage{pstricks,pstricks-add,pst-math,pst-xkey} 
+\usepackage{float}
+\usepackage{caption}
+\usepackage{natbib} %pour la bibliographie
+\usepackage{listings}
+\usepackage{tabularx}
+\captionsetup{figurewithin=none}  
+\captionsetup{tablewithin=none}
+\usepackage{titletoc}
+\usepackage{hyperref}
+\titlecontents{subsection}[3.8em]{}{}{}{}[\addvspace{-0.5pt}]
+%%%%%%%% Taille des pages
+\usepackage{geometry}
+\geometry{top=2cm, bottom=2cm, left=3cm, right=3cm}
+%%%%%%%%%%%
+%\usepackage{setspace}
+%
+%%%%%%%%%
+%Ent\^etes
+\usepackage{fancyhdr}
+\pagestyle{fancy} 
+\fancyhf{}
+\lhead{Conception d'un jeu vidéo rétro}
+%\markright{\thechapter}
+\rhead{Chapitre \thechapter}
+\lfoot{Travail de maturit\'e}
+\rfoot{Quentin Angéloz}
+\cfoot{\thepage}
+
+%\title{Méthodes de tri}
+%\author{John Doe}
+\date{} % n\'ecessaire pour un titre pr\'ed\'efini
+%fonction pr\'ed\'efinie pour une ligne horizontale
+\newcommand\lignehorizontale{\noindent\rule{\linewidth}{1.5pt}}
+%%%%%%
+\newtheorem{p}{Proposition}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Ha}{\mathbb{H}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\pt}{\hspace{\stretch{1}}}
+%%%%%% Compteurs d'exercices
+\newcounter{compteur}
+\newcounter{compt}
+%%%%%% Taille des marges
+%\addtolength{\hoffset}{-0.7cm} \addtolength{\textwidth}{1.4cm}
+%\addtolength{\voffset}{-2.5cm} \addtolength{\textheight}{5cm}
+%%%%%% Bullets pour itemize
+\newenvironment{dev}{\begin{itemize} 
+\renewcommand{\labelitemi}{$\bullet$}}{\end{itemize}} 
+%%%%%%
+\begin{document}
+%
+\begin{titlepage}
+
+\vspace{\stretch{1}}
+\lignehorizontale \\
+
+\begin{flushright} %alignement \`a droite
+	\Large \textit{Conception d'un jeu vidéo rétro} \\
+	\LARGE \textsc{Dave Unchained} \\
+	\LARGE Quentin Angéloz
+\end{flushright}
+
+\lignehorizontale
+
+\vspace{\stretch{1}}
+\vspace{\stretch{1}}
+\vspace{\stretch{1}}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.55]{Dave_Unchained.eps} 
+\caption{Capture d'écran}
+\end{center}
+\end{figure}
+\vspace{\stretch{2}}
+\vspace{\stretch{2}}
+
+
+\begin{center}
+	Coll\`ege Saint-Michel - Fribourg \\
+	Travail de maturit\'e sous la direction de Yves Dubey et Yves Roisin \\
+	Rendu le 1 avril 2019
+\end{center}
+
+
+\end{titlepage}
+%
+%entête
+%
+\setcounter{compteur}{0}
+\thispagestyle{empty}
+
+
+\thispagestyle{empty}
+\tableofcontents
+\addtocontents{toc}{\protect\thispagestyle{empty} 
+                    \protect\pagestyle{empty}}
+\thispagestyle{empty}
+\listoffigures
+\thispagestyle{empty}
+
+\frontmatter % Prologue 
+
+\chapter{Introduction}
+%\section{Introduction}
+%\label{sec:Introduction}
+
+
+%%%%%%%%%%%%%%\R^*
+%\vspace{0.3cm}
+\pagenumbering{arabic} \setcounter{page}{1} 
+
+Ce travail de maturité m'a interpellé dès que j'ai vu qu'il était proposé. Depuis tout petit, je me suis intéressé aux ordinateurs et à l'informatique; d'une part grâce à mon père qui m'a initié aux jeux dès mon plus jeune âge et d'autre part par le fait que ma curiosité a toujours été attirée par les ordinateurs et autres consoles de jeux vidéos.
+
+ J'ai essayé de me lancer dans la programmation déjà avant la réalisation de ce TM, mais je n'ai jamais eu de réelle motivation qui m'ait poussé à aller jusqu'au bout d'une oeuvre. Je m'étais adonné à un peu de Visual Basic lorsque j'étais petit, puis vers mes onze ans, j'ai fait un très rapide survol du C avec un microcontrôleur Arduino que j'avais reçu pour mon anniversaire. J'avais suivi le  manuel donné avec le microcontrôleur et réalisé tous les exemples présentés par celui-ci. Jusqu'à ce jour, Je ne m'étais pas encore lancé dans des oeuvres provenant de ma propre initiative. J'ai donc vu ce travail comme une possibilité de finalement me lancer dans la programmation et d'aboutir à une oeuvre complète.
+ 
+De plus, j'ai choisi comme option spécifique "physique et application des maths" qui comporte un peu  de programmation avec le logiciel Wolfram Mathematica et j'ai choisi cette année l'option complémentaire "informatique"; tous les éléments en corrélation avec ce choix étaient présents, et jamais je ne m'étais intéressé au langage qu'est Python, ni ne l'ai pratiqué dans mon option complémentaire. 
+ Enfin, je souhaiterais dans mon avenir me lancer dans des études comportant de l'informatique, d'où mon intérêt pour ce TM.
+
+
+
+Mon jeu est inspiré d'un mini-jeu qui se nomme "Journey of the Prairie King" présent dans le jeu "Stardew Valley", sorti le 26 février 2016 sur Windows; un mini-jeu de type "shoot'em up" où le joueur contrôle un cowboy qui se bat contre des monstres. Ce mini-jeu est une minuscule annexe, presque anecdotique, accessible via une borne d'arcade dans le jeu original. Au fil de l'avancée du personnage, le jeu devient de plus en plus difficile et le personnage finit par rencontrer des boss contre lesquels il doit se battre.
+
+Mon intention n'était en aucun cas de reproduire ce jeu telle une copie. Le jeu original est plus complexe que le jeu que j'ai réalisé. Je voulais juste garder le concept de base et construire quelque chose par moi-même autour, donc au final mon jeu possède quelques similitudes mais est surtout composé d'éléments issus de ma propre inspiration.
+
+
+
+
+\mainmatter
+\pagenumbering{arabic} \setcounter{page}{2}
+
+%\part{Définitions et syntaxe}
+%\pagenumbering{arabic} \setcounter{page}{5} 
+
+\chapter{Description du jeu}
+
+Dans mon jeu, le joueur contrôle un cowboy qui voit des ennemis converger vers lui simultanément. Son but est de les tuer tous et de survivre le plus longtemps possible. Afin de les éliminer, il peut leur tirer dessus avec la souris et ils sont ainsi éliminés dans une explosion.
+
+Les ennemis ont 4 zones d'apparition sur l'écran: en haut, en bas, à gauche et à droite avec des probabilités d'apparition plutôt semblables. Logiquement, le joueur a donc meilleur temps d'essayer de rester le plus possible au centre de l'écran afin d'éviter de se faire acculer par les ennemis qui convergent vers lui. De plus, les coins de l'écran sont des endroits où le joueur est interdit d'accès, mais pas les ennemis. Ils sont donc à première vue avantagés dans leurs mouvements. De plus, ils peuvent se déplacer dans toutes les directions possibles alors que le cowboy n'en a que huit. En contrepartie, la vitesse de base du joueur est légèrement plus grande que celle des ennemis ce qui équilibre les deux acteurs de mon jeu.
+
+Le joueur a aussi pour s'aider des "Power-ups" qui apparaissent aléatoirement, avec des effets distincts et qui peuvent être cumulés. En voici la liste:
+\begin{enumerate}
+\item BulletSpeed : augmente la vitesse de chaque balle tirée\\
+\item Invincibility : confère un bouclier au joueur (pour un certain temps) qui tue tous les ennemis qui le touchent, mais dès lors ne confère pas de points de score. \\
+\item SpeedUp : augmente la vitesse de déplacement du personnage\\
+\item Big Bullets : Augmente la taille des projectiles tirés, ainsi il devient plus simple de toucher les ennemis\\
+\item Boss Power-up : Power-up spécial qui n'apparaît que s'il y a un combat contre un boss. Il est nécessaire pour blesser ce dernier et prend l'apparence d'une balle rouge. Il ne dure cependant que quelques instants et ne permet de toucher le boss que quelques fois. Son taux d'apparition est plus fréquent que celui d'un "Power-up" d'un autre type.\\
+
+\end{enumerate}
+Les "Power-ups" apparaissent sur l'écran avec une position au hasard et durent 200 ticks; passé ce délai, ils disparaissent. Si le joueur marche sur l'un d'entre eux, il en gagne l'effet. Un "Power-up" peut apparaître sur les bordures que le personnage ne peut pas traverser mais il pourra quand même être récupéré si l'on se déplace en bordure. Ils sont tous bénéfiques et d'une grande aide pour le joueur.
+
+ Si un ennemi touche le personnage, celui-ci meurt et perd une vie sauf s'il a le bonus "invincibility" actif. Il commence avec trois vies et lorsqu'il n'en a plus c'est "Game Over". Le joueur peut regagner une vie chaque 50 ennemis standards tués. Le but global du jeu est de faire le meilleur score possible. Chaque ennemi de base tué vaut 1 point. 
+Il existe deux types d'ennemis: Des ennemis de base qui ne font qu'avancer vers le joueur et un autre type d'ennemis qui, en plus de converger vers le joueur, tire contre celui-ci. Lorsqu'une de leurs balles touchent le joueur, il perd une vie. Ces ennemis ont trois vies au début de la partie et apparaissent moins fréquemment que les ennemis standards.
+ 
+Malgré ce principe simpliste, il existe une progression dans mon jeu par le fait qu'il existe plusieurs ennemis mais aussi que la difficulté augmente graduellement. En effet, tous les 30 ennemis tués, le personnage est invité à se rendre dans une nouvelle zone, qui sera plus compliquée car les ennemis apparaîtront plus fréquemment. De plus, après cinq zones nettoyées de tous les ennemis, le joueur doit affronter un boss, que l'on ne peut que blesser avec un "Power-up" spécial (voir ci-dessous) qui n'apparaît que si le boss est en vie (avec un taux d'apparition plus fréquent qu'un Power-up standard). Une fois celui-ci vaincu,le joueur continue de jouer avec la difficulté qui continue d'augmenter car les ennemis auront un point de vie supplémentaire après chaque boss vaincu.
+Chaque boss vaut 30 points. Le prochain boss verra par ailleurs chaque fois sa vie doubler et sa vitesse légèrement augmenter.
+Le jeu commence assez facilement mais au fur et à mesure de l'avancée du joueur, il devient plus intéressant de par sa difficulté croissante.
+\\
+\\
+
+\begin{figure}[h]
+\begin{center}
+
+
+\includegraphics[scale=0.55]{Stardew_borne.eps}
+
+\caption{Borne d'accès au jeu dans "Stardew valley" et jeu d'inspiration}
+\end{center}
+\end{figure}
+
+        
+\chapter{Débuts et difficultés rencontrées }
+
+J'ai eu quelques difficultés à commencer la partie de programmation. Jamais auparavant je n'étais parti de rien et arrivé à quelque chose de concret. Heureusement, les exemples de mes précepteurs m'ont grandement aidé et m'ont donné plusieurs éléments qui ont énormément facilité mon raisonnement par la suite.
+\section{Mes débuts}
+Ma première expérience avec Python et Pygame a eu lieu lors de ma première réunion de travail de maturité. Mon professeur nous avait montré un exemple où l'on pouvait faire bouger un carré sur un écran. Le code était simpliste, mais n'ayant jamais pratiqué auparavant, il m'a fallu bien l'analyser pour le comprendre. Je connaissais déjà le principe des classes et des méthodes, mais je n'avais jamais vu d'autre langage qui utilisait les attributs 'self'.
+Par la suite, j'ai commencé gentiment, j'ai continué de suivre les cours et en premier lieu, essayé de modifier quelque peu les exemples que mes professeurs me donnaient. Ainsi, j'ai essayé d'animer mon propre personnage et de le faire se déplacer. De cette manière, mon long apprentissage avait commencé. Je n'étais pas très rapide à la réalisation, mais j'ai persévéré et, à force d'obstination, je suis toujours arrivé à mes fins, d'une manière ou d'une autre.
+\section{Principales difficultés}
+Ma première grande difficulté a été de faire tirer mon personnage. Ensuite j'ai eu de la peine à gérer mes collisions à l'intérieur de plusieurs groupes. C'était des principes qui étaient tous nouveaux pour moi et j'ai dû grandement faire appel à Internet et à des tutoriels. Je tenais cependant à y arriver par moi-même, nonobstant  l'évidente perte de temps que cela engendrait, l'apprentissage et la compréhension ont été en premier lieu mes priorités et, une fois les principes de base acquis, Les algorithmes nécessaires à la réalisation de mon jeu me sont venus à l'esprit beaucoup plus vite. Je savais quoi faire et comment le faire en pseudocode.
+
+Une de mes grandes difficultés a été sans aucun doute la compréhension de la gestion de collisions entre groupes. Pour cela, j'ai eu pas mal de difficultés à comprendre et dans un premier lieu différencier les types de collisions que Pygame nous propose. J'ai eu particulièrement de la peine à générer les masques de mon personnage, étant donné que son image dépend de deux dictionnaires, à savoir l'un donnant des informations sur sa direction et l'autre traitant laquelle des trois images propre à l'animation est oblitérée sur l'écran.
+
+
+Une autre part de mon travail qui m'a pris du temps était la réalisation de mes graphismes. J'ai été assisté et conseillé pour cela par ma soeur Chloé Angéloz, qui est en dernière année au collège Saint-Michel dans la classe 4B2. Je les ai réalisés à l'aide du logiciel japonais Medibang Paint. Il est à la base plutôt conçu et pensé pour dessiner des mangas mais il m'a été conseillé par ma soeur car elle est une grande adepte de celui-ci. J'ai donc réalisé la plupart de mes graphismes moi-même. Certains d'entre eux sont néanmoins l'oeuvre de ma soeur (notamment l'image de titre). Les graphismes qui n'ont pas été réalisés par moi proviennent du site internet "Opengameart.com". C'est un site où des gens postent des images, musiques, et autres. Toutes les contributions publiées sur ce site sont libres à la réutilisation avec mention de l'auteur.
+
+J'ai aussi voulu me lancer dans la réalisation de mes propres musiques. Ne m'étant jamais essayé à la composition musicale auparavant, et bien que je pratique de la guitare acoustique, je ne m'attendais pas à un résultat transcendant. J'ai donc décidé de faire de mon mieux dans la mesure du possible.
+Pour réaliser mes musiques, je me suis aidé du logiciel audacity et FL Studio Fruity Edition. J'ai utilisé les échantillons fournis de base avec ce logiciel.
+La réalisation de mes musiques a été longue et fastidieuse pour un résultat passable, mais je ne regrette pas ce choix car elles viennent de moi et renforcent l'idée que ce jeu est ma pure création. J'ai cependant quand même décidé de changer la musique qui se joue pendant une partie car je ne la trouvais vraiment pas satisfaisante. J'ai donc opté pour une musique que j'ai trouvée sur "OpenGameart.com", comme quelques-uns de mes graphismes.
+
+\chapter{Parties intéressantes}
+Au fil de mon apprentissage, je me suis vite rendu compte des difficultés principales de la programmation, à savoir d'une part la compréhension des processus nécessaires à la réalisation d'un algorithme et d'autre part l'apprentissage des structures propres au langage qu'est Python.
+Dès lors, il m'a fallu beaucoup de temps pour réaliser certaines parties de mon code, mais l'exploit s'est avéré d'autant plus gratifiant quand je suis arrivé finalement à réaliser mes souhaits.
+
+
+%\begin{multicols}2
+%\setlength{\columnsep}{30pt}
+
+\section{Convergence des ennemis}
+J'ai choisi de faire converger les ennemis vers mon personnage de cette façon:
+
+\begin{verbatim}
+ norme = math.sqrt(math.pow(perso.x - self.x,2) + math.pow(perso.y - self.y,2))
+\end{verbatim}
+Ceci étant concrètement:
+\\
+\\
+$\sqrt{(perso.x-self.x)^2 + (perso.y-self.y)^2}$
+\\
+\\
+Cette simple ligne détermine la norme du vecteur entre le personnage et l'ennemi. Pour ce faire, je fais appel à plusieurs fonctions de python.math, à savoir:
+\begin{enumerate}
+\item math.sqrt(x): retourne la racine carrée de x
+\item math.pow(x,y): retourne x élevé à la puissance y
+\end{enumerate}
+
+C'est comme si je possédais 2 points dans l'espace et que je calculais la norme du vecteur entre ces deux points à partir de la composante en x et la composante y de ce vecteur. Puisque je suis dans un repère orthonormé, l'angle entre mes vecteurs sur l'axe des x et l'axe des y est de 90$\degres$; donc je peux calculer la norme du vecteur à l'aide du théorème de Pythagore, à savoir:
+\begin{verbatim}
+La somme des carrés des cathètes est égale au carré de l'hypoténuse:
+\end{verbatim}
+
+
+$c^2 = a^2 + b^2$ $\Leftrightarrow c$ = $\sqrt{a^2 + b^2}$
+
+
+De cette manière j'ai pu en déduire c, qui n'est ici rien d'autre que la norme du vecteur qui nous intéresse. J'applique donc cela dans mon cas particulier:
+pour ce faire, je calcule la composante horizontale de mon vecteur, à savoir:
+\begin{verbatim}
+perso.x - self.x
+\end{verbatim}
+cela calcule la différence de la position de mon personnage et la position de l'ennemi (self retournant ici l'ennemi, car je suis à l'intérieur de sa classe) sur l'axe des abscisses.
+Je fais la même chose pour l'axe des ordonnées:
+\begin{verbatim}
+perso.y, self.y
+\end{verbatim}
+à partir de cela je n'ai plus qu'à appliquer le théorème décrit plus haut.
+Donc concrètement, je calcule la racine carrée de la somme de la différence de la position en x de mon personnage avec la position en x de l'ennemi (cette différence) élevée au carré et la différence de la position en y de mon personnage avec la position en y de l'ennemi élevée au carré.
+
+Par la suite, je calcule les attributs concrets en terme de déplacement de l'ennemi:
+\begin{verbatim}
+self.speedx =(perso.x - self.x)/ norme*ennemyspeed
+self.speedy = (perso.y - self.y)/norme*ennemyspeed
+\end{verbatim}
+Je calcule ici sa vitesse en x et en y respectivement; pour cela je calcule le vecteur entre mon personnage et l'ennemi pour les deux composantes x et y divisé par la norme calculée auparavant multipliée par la variable "ennemyspeed" qui modifie la vitesse de convergence des ennemis. Cette variable est altérée à chaque fois qu'un boss est éliminé. En effet, elle est mentionnée au début du fichier:
+\begin{verbatim}
+self.ennemyspeed = 6 + level/1.5
+\end{verbatim}
+Cet attribut dépend d'une seule variable, nommée "level". Cette variable est incrémentée de 1 à chaque fois qu'un boss est éliminé. Concrètement, elle représente le niveau de difficulté. Elle est initialisée à 1. Ainsi au niveau 2, l'attribut "self.ennemyspeed" vaut 7,$\overline{3}$.
+\newline
+J'ai donc calculé de cette manière le déplacement horizontal et vertical de mon ennemi.
+\\
+\\
+
+\begin{figure}[h]
+\begin{center}
+
+
+\includegraphics[scale=2]{schema.eps}
+
+\caption{Schéma explicatif}
+\end{center}
+\end{figure}
+
+%\begin{multicols}2
+%\setlength{\columnsep}{30pt}
+
+\section{Déplacement du boss}
+Mon jeu contient un combat contre un boss. Tous les cinq déplacements d'écran, le joueur doit affronter un ennemis atypique qui prend la forme d'un Minotaure. Celui-ci fonctionne d'une manière similaire à celle d'un ennemi. Nous allons nous intéresser à sa manière de se déplacer,qui est caractérisée par une charge du Minotaure vers le joueur.
+\\
+J'ai ici deux méthodes, la première va calculer la direction dans laquelle le boss va se déplacer. Cela se fait exactement de la même manière que les ennemis de base (cf. 2.1). La seconde méthode, quant à elle, est bien plus intéressante.
+Celle-ci gère son déplacement, qui se fait en deux parties. En premier lieu, le Minotaure recule légèrement pendant un cours laps de temps, puis il se rue sur le joueur:
+\begin{verbatim}
+
+
+    def get_direction(self):
+# calcule la norme du vecteur entre lui et le personnage
+       norme = math.sqrt(math.pow(perso.x - self.x,2)
+       		   + math.pow(perso.y - self.y,2))
+       self.speedx =(perso.x - self.x)/ norme*self.bossspeed
+       self.speedy = (perso.y - self.y)/norme*self.bossspeed
+       self.last_charge = pygame.time.get_ticks()
+            
+           
+# son déplacement
+    def move(self):
+# si il est apparu moins depuis - de 60 ticks, il ne bouge pas
+        if self.time_spawn < 60:
+                pass
+# si il a fini son déplacement, il s'arrête
+        if self.charge_counter == 30:
+                self.moving = False
+                self.animation_time = 3
+                
+\end{verbatim}
+Afin de savoir s'il doit encore se déplacer, il regarde si "self.charge$\_$counter" est égal à 30. Le cas échéant, sa valeur booléenne "self.moving" est sur "False" ce qui redéfinit son image sur son image fixe et signifie qu'il a fini de se déplacer. Il va donc s'arrêter dans sa méthode "update". La condition else qui suit n'est là que pour l'empêcher de sortir de l'écran.
+\begin{verbatim}
+            else:
+     \end{verbatim}
+     (Je ne fais que l'empêcher de sortir des bordures ici.)
+\begin{verbatim}
+
+
+# l'animation ou il se prépare à charger
+                else:
+                    if self.charge_counter < 10:
+                        self.animation_time = 6
+                        self.x = self.x - self.speedx/ 30
+                        self.y = self.y - self.speedy/30
+                        self.charge_counter = self.charge_counter + 1
+# la charge
+                    elif self.charge_counter < 30:
+                        self.animation_time = 3
+                        self.x = self.x + self.speedx
+                        self.y = self.y + self.speedy
+                        self.charge_counter = self.charge_counter + 1
+\end{verbatim}
+Ici, il agit en deux temps. En premier lieu, la variable "self.charge$\_$counter" est inférieure à 10, dès lors, il joue son animation de préparation, augmentant le délai entre chaque image et le faisant se déplacer d'une courte distance dans le sens contraire du vecteur de déplacement qu'il a calculé.
+Ensuite, tant que cette variable est plus grande que 9 et plus petite que 30, il se déplace vraiment. Sa vitesse d'animation est rétablie à sa vitesse de course et il se déplace à sa vitesse de course définie, sa direction étant donnée par le vecteur qu'il a calculé auparavant.
+\begin{verbatim}
+# appelle les methodes une a une
+    def update(self):
+        now = pygame.time.get_ticks()
+        if now - self.last_charge > self.chargedelay:
+            if self.time_spawn < 60:
+                self.moving = False
+
+                pass
+            else:
+                self.get_direction()
+                self.charge_counter = 0
+                self.moving = True
+                
+           		(...)
+\end{verbatim}
+Finalement, dans sa méthode update, il regarde quand était sa dernière charge et s'il est temps pour lui de recommencer, il recommence son déplacement.
+\begin{figure}[h]
+\begin{center}
+
+
+\includegraphics[scale=0.9]{Ennemis.eps}
+
+\caption{Différents ennemis}
+\end{center}
+\end{figure}
+
+
+\chapter{Améliorations depuis la version intermédiaire}
+
+J'ai ajouté et corrigé plusieurs choses à la suite des retours que j'ai reçus de ma version intermédiaire. J'ai ajouté beaucoup de fonctionnalités qui n'étaient pas encore présentes et globalement peaufiné les mécaniques de mon jeu.
+\section{Gestion des tirs à la souris}
+Une des premières améliorations que j'ai menées à bien était de remanier le système de tir de mon personnage. J'utilisais à la base les touches 'w','a','s','d','q','e','<' et 'c' afin de tirer dans 8 directions prédéfinies. à savoir les quatre points cardinaux et leurs entre-deux. Ce système fonctionnait mais était très peu intuitif et manquait de précision. Il rendait mon jeu bien plus compliqué et par la même occasion gâchait un peu l'expérience. Sur les conseils de mes maîtres, j'ai donc opté pour un autre périphérique qui gèrerait les tirs, à savoir la souris.
+Dorénavant, le personnage regarde en direction de la position de la souris et lorsque le joueur presse le clic gauche de la souris, une balle est tirée, effectuant le chemin le plus court entre le joueur et la position de la souris au moment du tir. Cela implique donc que le joueur n'est plus limité à huit directions pour tirer mais bel et bien une infinité.
+Dans la classe Perso:
+\begin{verbatim}
+# retourne la position horizontale de la souris
+            mousex = pygame.mouse.get_pos()[0]
+# retourne la position verticale de la souris
+            mousey = pygame.mouse.get_pos()[1]
+            angle = math.degrees(math.atan2(mousey- self.y, mousex- self.x))
+
+\end{verbatim}
+Je définis "mousex" et "mousey" comme la position du curseur de ma souris. Ensuite, je calcule l'angle que fait le vecteur entre le personnage et le curseur de la souris avec l'horizontale à l'aide de la fonction atan2(x,y). Cette fonction retourne l'angle (en radians) entre la partie positive de l'axe des x du plan et le point de ce plan (x,y). Il est à noter que l'angle retourné est entre -$\pi$ et $\pi$. Il est positif pour les angles de sens trigonométrique et négatif pour les angles de sens horaire. Etant donné que l'angle retourné est en radians, je le transforme en degrés avec math.degrees car il m'est plus aisé de travailler en degrés dans ce cas. Après avoir calculé cet angle, il ne me reste plus qu'à définir la direction de mon personnage en fonction de la valeur de l'angle.
+Afin de réaliser cela, je dois calculer le vecteur entre la position de mon personnage et la position de la souris afin d'obtenir le sens et la direction de celui-ci, puis je le divise par sa norme afin d'obtenir un vecteur unitaire.
+\\
+Dans la classe Bullet:
+\begin{verbatim}
+mouse_x = pygame.mouse.get_pos()[0]
+mouse_y = pygame.mouse.get_pos()[1]
+ self.speedx = bulletspeed* (mouse_x -self.start_posx) /
+ math.hypot(mouse_x - self.start_posx, mouse_y - self.start_posy)
+ self.speedy = bulletspeed* (mouse_y -self.start_posy) /
+ math.hypot(mouse_x - self.start_posx, mouse_y - self.start_posy)
+\end{verbatim}
+Ces quelques lignes de code définissent ici la direction de la balle. Je calcule ici sa vitesse de déplacement respectivement sur l'axe des abscisses et des ordonnées. Pour cela, je calcule le vecteur entre la position de ma souris et la position d'apparition de la balle en x (pour "self.speedx" et en y (pour "self.speedy") que je divise par la norme du vecteur entre le curseur et le personnage. Pour calculer celui-ci, j'utilise la fonction math.hypot(x,y) qui calcule l'hypoténuse entre deux vecteurs normaux.
+Cela est équivalent à : $\sqrt{x^2 + y^2}$. Cela me donne un vecteur unitaire que je multiplie par la variable "bulletspeed", afin de faire avancer la balle à la vitesse souhaitée.
+\section{Scrolling}
+
+Une des autres améliorations sur laquelle j'ai dû travailler a été d'ajouter du scrolling. Cela ajoute un peu de diversité au décor et le jeu est ainsi moins répétitif. J'ai opté pour du défilement écran par écran, donc rien de progressif. Le principe est le suivant: tous les 30 ennemis tués, les ennemis cessent d'apparaître et le joueur est invité à se rendre sur la droite de l'écran. Ceci fait, le scrolling est déclenché:
+\begin{verbatim}
+# triple condition qui déclenche le scrolling
+ if (scrollcount >= 30 and perso.x >= scr_width - 64 and flechedisplay == True):
+              scroll = True
+              scroll_delay = 0.1
+       
+\end{verbatim}
+ici, "scrollcount" est  une variable contenant le nombre d'ennemis tués, réinitialisée après chaque écran défilé.\\
+la position en x du personnage doit être suffisamment à droite de l'écran pour déclencher cela.\\
+La variable "flechedisplay" est une valeur qui détermine s'il y a une flèche qui clignote à droite de l'écran. Elle est indispensable ici car sans sa présence, on pourrait changer d'écran même si le boss est en vie.
+\\
+Intéressons-nous au scrolling en lui-même:
+\begin{verbatim}
+# en cas de scroll
+            if scroll == True:
+# vide les groupes
+                    all_sprites.empty()
+                    bullets.empty()
+                    powerups.empty()
+                    boss_powerups.empty()
+                    explosions.empty()
+                    ennemybullets.empty
+                    ennemys.empty()
+                    boss_group.empty()
+# désactive la flèche
+                    flechedisplay = False
+                    minotaure_alive = False
+
+# scroll tous les scroll_delay ( soit 0,1 ticks)
+                    now = pygame.time.get_ticks()
+                    if now - last_scroll > scroll_delay:
+                         last_scroll = now
+# décale l'image de fond de 50
+                         backgroundImage.scroll(-55)
+# corrige la position de mon personnage
+                         perso.x -= 54
+                         scr.blit(backgroundImage,(0,0))
+\end{verbatim}
+En premier lieu, je vide tous les groupes, puis je désactive l'affichage de la flèche et je définis "minotaure$\_$alive" sur "False" (bien que techniquement ce ne soit jamais nécessaire). Ensuite, je calcule s'il est temps de décaler l'image. Le cas échéant, je décale mon image de fond de 55 pixels vers la gauche. Pour cela j'utilise la fonction pygame.Surface.scroll(dx =0,dy = 0) qui décale la surface appelée de $\Delta$x pixels vers la droite et $\Delta$y pixels vers le bas. Puisque j'utilise ici une valeur négative, je décale la surface vers la droite. Je dois aussi déplacer mon personnage sur la droite, sinon il resterait à droite de l'écran à la fin du défilement. Comme le scrolling se déclenche si mon personnage est à "scr$\_$widht" -64 et pour éviter un décalage de mon image entre chaque écran, il est déplacé un petit peu moins que l'écran (-54). Finalement, j'affiche l'image de fond qui vient de subir un défilement sur l'écran.
+Il me reste cependant à arrêter le défilement:
+\begin{verbatim}
+if perso.x <=  0:
+             ennemys_killed.empty()
+             scroll = False
+             minotaure_killed = False
+             now = pygame.time.get_ticks()
+             perso.x += 30
+
+# réduit le délai d'apparition des ennemis
+             spawn_delay -= 30
+             afterscroll = True
+
+# bouclier qui dure moins longtemps pour éviter de se faire tuer instantanément
+ par un ennemi qui apparait sur la droite
+             activepowerups.append('invincibility')
+             last_invincibility = now - 10000
+
+# incrémente la variable pour qu'au 5e scroll, l'image originale soit affichée
+             times_scrolled += 1
+             if times_scrolled == 5:
+
+                backgroundImage=pygame.image.load('fond_main_new.png').convert()
+                backgroundImage = pygame.transform.scale(backgroundImage,
+                (scr_width*6, scr_height))
+                                times_scrolled = 0
+# augmente la difficulté d'un niveau
+                                level += 1
+\end{verbatim}
+ Le défilement s'arrête lorsque la position de mon personnage sur l'axe des abscisses équivaut à 0. Dès lors, le personnage est légèrement avancé pour cause d'esthétisme. Ensuite, le temps entre chaque vague d'ennemis est réduit de 30 ticks. Ensuite, je donne un bouclier au joueur pendant un cours laps de temps afin qu'il soit invulnérable pendant un certain temps juste après le scrolling. Je fais ceci  afin d'éviter qu'il se fasse immédiatement tuer par un ennemi malicieux qui apparaîtrait dans un endroit impossible à esquiver. Finalement, j'incrémente la variable "times$\_$scrolled" de 1. Ceci est fait pour que lorsque l'on est arrivé au terme de la longueur de l'image (épuisé tous les défilements), le défilement recommence depuis le début. De plus, tous les 5 écrans défilés, la difficulté augmente de 1 par l'incrémentation de la variable "level" de 1.
+
+
+
+
+\chapter{Conclusion}
+
+Pour conclure, j'ai bien développé mes connaissances dans le langage qu'est Python. J'ai pris beaucoup de plaisir à réaliser ce travail, et l'apprentissage n'était en aucun cas un fardeau. J'ai bien entendu rencontré des difficultés, mais avec un peu de persévérance, j'ai toujours fini par résoudre le problème. Tout au long du travail, je dois avouer que les cours de Monsieur Dubey m'ont grandement aidés. Il nous a présenté des exemples et fourni une sorte de boîte à outils qui contenait des choses que j'ai utilisées tout au long de la réalisation de mon jeu. Ceci couplé à sa sympathie naturelle ainsi qu'à celle de Monsieur Roisin, venir au réunions à toujours été fort intéressant. Bien entendu, ces cours seuls n'étaient pas suffisants. J'ai aussi regardé quelques vidéos sur YouTube et analysé de nombreux exemples sur internet, notamment quelques jeux ayant été postés sur le site internet de Pygame.
+ Ce travail de maturité n'a pas seulement développé mes compétences en programmation. J'ai aussi appris à utiliser d'autres programmes comme LaTeX, ou du moins en survol. De plus, je me suis essayé au graphisme par ordinateur, bien que cela m'ait nécessité quelque aide de ma soeur, il m'a plu de dessiner mes propres images. Encore, j'ai composé moi-même quelques musiques, même si je n'ai pas les notions théoriques nécessaires à la réalisation de compositions musicales avancées, le simple fait de me dire que je les ai faites moi-même me satisfait.
+ En définitive, je suis content d'avoir pu suivre ce séminaire. Il était fort intéressant et m'a enrichi non seulement techniquement, mais aussi dans ma capacité à planifier. Ce long travail ne m'a que plus inspiré à me lancer dans un domaine en lien avec l'informatique dans la suite de mes études.
+\makeatletter
+\def\thebibliography#1{\chapter{R\'ef\'erences bibliographiques\@mkboth
+{REFERENCES}{REFERENCES}}\list
+{[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
+\advance\leftmargin\labelsep
+\usecounter{enumi}}
+\def\newblock{\hskip .11em plus .33em minus .07em}
+\sloppy\clubpenalty4000\widowpenalty4000
+\sfcode`\.=1000\relax}
+\makeatother
+
+\nocite{*}%Pour afficher toutes les entr\'ees de la biblioggraphie
+\bibliographystyle{authordate3}
+\bibliography{bibliographie}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+
+
+\chapter*{D\'eclaration sur l'honneur}
+	
+	\begin{tabular}{ll}
+		Nom et pr\'enom: & Quentin Angéloz\\
+		Adresse: & Chemin de la Forêt 2 \\
+		& 1720 Corminboeuf
+	\end{tabular}
+	\\
+
+	Je certifie que le travail \textsc{Conception d'un jeu vidéo: Dave Unchained} a \'et\'e r\'ealis\'e conform\'ement aux conditions relatives \`a la r\'ealisation du Travail de Maturit\'e. \\
+
+	\begin{tabular}{l}
+	Lieu, date et signature:
+	\end{tabular}
+
+\end{document}
+

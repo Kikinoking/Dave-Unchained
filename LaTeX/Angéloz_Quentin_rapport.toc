@@ -1,0 +1,16 @@
+\babel@toc {french}{}
+\thispagestyle {empty} \pagestyle {empty}
+\contentsline {chapter}{Introduction}{1}{chapter*.4}% 
+\contentsline {chapter}{\numberline {1}Description du jeu}{2}{chapter.1}% 
+\contentsline {chapter}{\numberline {2}D\'ebuts et difficult\'es rencontr\'ees }{4}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Mes d\'ebuts}{4}{section.2.1}% 
+\contentsline {section}{\numberline {2.2}Principales difficult\'es}{4}{section.2.2}% 
+\contentsline {chapter}{\numberline {3}Parties int\'eressantes}{6}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Convergence des ennemis}{6}{section.3.1}% 
+\contentsline {section}{\numberline {3.2}D\'eplacement du boss}{8}{section.3.2}% 
+\contentsline {chapter}{\numberline {4}Am\'eliorations depuis la version interm\'ediaire}{10}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Gestion des tirs \`a la souris}{10}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}Scrolling}{11}{section.4.2}% 
+\contentsline {chapter}{\numberline {5}Conclusion}{14}{chapter.5}% 
+\contentsline {chapter}{\numberline {6}R\'ef\'erences bibliographiques\markboth {REFERENCES}{REFERENCES}}{15}{chapter.6}% 
+\contentsfinish 

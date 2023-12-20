@@ -1,0 +1,143 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citename{Marley~Adair, }2016]{livre}
+{\sc Marley~Adair, Brian~Carling}. 2016.
+\newblock {\em Python Hunting}.
+\newblock Pearson.
+
+\bibitem[\protect\citename{site~internet 01~(Horst~JENS), }Consult\'e le 13
+  f\'evrier 2019]{site1}
+{\sc site~internet 01~(Horst~JENS)}. Consult\'e le 13 f\'evrier 2019.
+\newblock {\em Step 014 - Pygame sprites}.
+\newblock \underline{{\small
+  http://thepythongamebook.com/en:pygame:step014?do=index}}.
+
+\bibitem[\protect\citename{site Internet 02 (Paul~Craven), }Consult\'e le 13
+  f\'evrier 2019]{site2}
+{\sc site Internet 02 (Paul~Craven)}. Consult\'e le 13 f\'evrier 2019.
+\newblock {\em Chapter 14: Bullets}.
+\newblock \underline{{\small https://www.youtube.com/watch?v=PpdJjaiLX6A}}.
+
+\bibitem[\protect\citename{site Internet 03 (Christophe~Bertrand), }Consult\'e
+  le 13 f\'evrier 2019]{site3}
+{\sc site Internet 03 (Christophe~Bertrand)}. Consult\'e le 13 f\'evrier 2019.
+\newblock {\em Sprites}.
+\newblock \underline{{\small
+  https://sciences-du-numerique.fr/tuto-pygame/sprites.html}}.
+
+\bibitem[\protect\citename{site~internet 04~(Dan737), }Consult\'e le 20
+  f\'evrier 2019]{site4}
+{\sc site~internet 04~(Dan737)}. Consult\'e le 20 f\'evrier 2019.
+\newblock {\em G\'erer les collisions avec pygame}.
+\newblock \underline{{\small
+  https://openclassrooms.com/forum/sujet/gerer-les-collisions-avec-pygame-1}}.
+
+\bibitem[\protect\citename{site internet 05~(usr2564301 ), }Consult\'e le 20
+  f\'evrier 2019]{site5}
+{\sc site internet 05~(usr2564301 )}. Consult\'e le 20 f\'evrier 2019.
+\newblock {\em Collision not working for pygame Sprites}.
+\newblock \underline{{\small
+  https://stackoverflow.com/questions/27498478/collision-not-working-for-pygame-sprites}}.
+
+\bibitem[\protect\citename{site~internet 06~(martineau), }Consult\'e le 25
+  f\'evrier 2019]{site6}
+{\sc site~internet 06~(martineau)}. Consult\'e le 25 f\'evrier 2019.
+\newblock {\em How to use pygame.surface.scroll()?}
+\newblock \underline{{\small
+  https://stackoverflow.com/questions/44610428/how-to-use-pygame-surface-scroll}}.
+
+\bibitem[\protect\citename{site~internet 07~(DJMcMayhem), }Consult\'e le 7 mars
+  2019]{site7}
+{\sc site~internet 07~(DJMcMayhem)}. Consult\'e le 7 mars 2019.
+\newblock {\em Bullets aren't shooting at the EXACT position of mouse :(}.
+\newblock \underline{{\small
+  https://stackoverflow.com/questions/33221308/bullets-arent-shooting-at-the-exact-position-of-mouse}}.
+
+\bibitem[\protect\citename{site~internet 08~(KidsCanCode), }Consult\'e le 20
+  f\'evrier 2019]{site8}
+{\sc site~internet 08~(KidsCanCode)}. Consult\'e le 20 f\'evrier 2019.
+\newblock {\em Shmup Part 1}.
+\newblock \underline{{\small
+  https://github.com/kidscancode/gamedev/blob/master/shmup/shmup-1.py}}.
+
+\bibitem[\protect\citename{site~internet 09~(KidsCanCode), }Consult\'e le 24
+  f\'evrier 2019]{site9}
+{\sc site~internet 09~(KidsCanCode)}. Consult\'e le 24 f\'evrier 2019.
+\newblock {\em Shmup Part 8}.
+\newblock \underline{{\small
+  https://github.com/kidscancode/gamedev/blob/master/shmup/shmup-8.py}}.
+
+\bibitem[\protect\citename{site~internet 10~(Python Software~Foundation),
+  }Consult\'e en mars 2019]{site10}
+{\sc site~internet 10~(Python Software~Foundation)}. Consult\'e en mars 2019.
+\newblock {\em Mathematical functions}.
+\newblock \underline{{\small https://docs.python.org/2/library/math.html}}.
+
+\bibitem[\protect\citename{site~internet 11~(L.~Kocbach), }Consult\'e en mars
+  2019]{site11}
+{\sc site~internet 11~(L.~Kocbach)}. Consult\'e en mars 2019.
+\newblock {\em LaTeX Math Symbols}.
+\newblock \underline{{\small
+  http://web.ift.uib.no/Teori/KURS/WRK/TeX/symALL.html}}.
+
+\bibitem[\protect\citename{site~internet 12~(Johannes~Bo), }Consult\'e en mars
+  2019]{site12}
+{\sc site~internet 12~(Johannes~Bo)}. Consult\'e en mars 2019.
+\newblock {\em LaTeX/Math\'ematiques}.
+\newblock \underline{{\small
+  https://fr.wikibooks.org/wiki/LaTeX/Math%C3%A9matiques}}.
+
+\bibitem[\protect\citename{site~internet 13~(Sogomn), }Consult\'e le 15 mars
+  2019]{images1}
+{\sc site~internet 13~(Sogomn)}. Consult\'e le 15 mars 2019.
+\newblock {\em Explosion}.
+\newblock \underline{{\small https://opengameart.org/content/explosion-3}}.
+
+\bibitem[\protect\citename{site~internet 14~(GrumpyDiamond), }Consult\'e en
+  mars 2019]{images2}
+{\sc site~internet 14~(GrumpyDiamond)}. Consult\'e en mars 2019.
+\newblock {\em SandTileset 16x16}.
+\newblock \underline{{\small
+  https://opengameart.org/content/more-sandtileset-16x16}}.
+
+\bibitem[\protect\citename{site~internet 15~(sholev), }Consult\'e en mars
+  2019]{images3}
+{\sc site~internet 15~(sholev)}. Consult\'e en mars 2019.
+\newblock {\em Shield Aura Effect}.
+\newblock \underline{{\small
+  https://opengameart.org/content/shield-aura-effect}}.
+
+\bibitem[\protect\citename{site~internet 16~(Gumichan01), }Consult\'e en mars
+  2019]{images4}
+{\sc site~internet 16~(Gumichan01)}. Consult\'e en mars 2019.
+\newblock {\em Shield Aura Effect}.
+\newblock \underline{{\small
+  https://opengameart.org/content/missiles-bullets-and-bomb-set}}.
+
+\bibitem[\protect\citename{site~internet 17~(InanZen), }Consult\'e en mars
+  2019]{images5}
+{\sc site~internet 17~(InanZen)}. Consult\'e en mars 2019.
+\newblock {\em Arrow keys, wsad, mouse icon}.
+\newblock \underline{{\small
+  https://opengameart.org/content/arrow-keys-wsad-mouse-icon}}.
+
+\bibitem[\protect\citename{site~internet 18~(Rallix), }Consult\'e en mars
+  2019]{images6}
+{\sc site~internet 18~(Rallix)}. Consult\'e en mars 2019.
+\newblock {\em Keyboard keys}.
+\newblock \underline{{\small https://opengameart.org/content/keyboard-keys-1}}.
+
+\bibitem[\protect\citename{site~internet 19~(Michael~Klier), }Consult\'e le 15
+  mars 2019]{sons1}
+{\sc site~internet 19~(Michael~Klier)}. Consult\'e le 15 mars 2019.
+\newblock {\em Large Monster}.
+\newblock \underline{{\small https://opengameart.org/content/large-monster}}.
+
+\bibitem[\protect\citename{site~internet 20~(Phoenix1291), }Consult\'e le 15
+  mars 2019]{sons2}
+{\sc site~internet 20~(Phoenix1291)}. Consult\'e le 15 mars 2019.
+\newblock {\em Sound effects Mini Pack1.5}.
+\newblock \underline{{\small
+  https://opengameart.org/content/sound-effects-mini-pack15}}.
+
+\end{thebibliography}
